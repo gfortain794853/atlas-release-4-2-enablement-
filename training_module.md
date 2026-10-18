@@ -2,20 +2,11 @@
 
 ## 1. Welcome and overview (1 min)
 
-## 2. SSO session timeout (3 min)
+**Say:** Atlas Knowledge 4.2 ships on 30 November 2026. This module covers four changes that matter to admins. Two are *breaking* changes that need action: the Search API v1 deprecation and the webhook payload v2 change. One may cause disruption to the user if they are not aware of it, as it changes a default for existing tenants: the SSO session timeout. One is a new, optional feature: citations in AI Answers. There's also a small change for authors, where the Publish button moves to the top toolbar, so you'll want to mention it to your team.
 
-**Competency practised:** #1, override the default SSO session timeout
-<!-- Competency 1, change C2 -->
+**Show:** A slide listing the four changes under three labels: "Breaking: action needed," "Default changes," and "New features"
 
-**Say:** In 4.2, the default SSO session timeout drops from 8 hours to 1 hour. That applies to new and existing tenants. If 1 hour doesn't suit your organization, an admin can override it under Settings > Security > Session. 
-
-**Show:** The "Default SSO session timeout reduced" entry from the release notes. Then a slide with the path: Settings > Security > Session.
-
-**Check:** How can the default SSO session timeout be changed? 
-
-**Answer:** Go to Settings > Security > Session
-
-## 3. Citations in AI Answers (2 min)
+## 2. Citations in AI Answers (2 min)
 
 **Competency practised:** #3, enable citations for AI Answers in a portal 
 <!-- Competency 3, change C4 -->
@@ -28,10 +19,23 @@
 
 **Answer:** Citations in AI Answers is off by default in 4.2. To turn them on, enable them (per portal) via AI Answers > Display > Show citations.
 
+## 3. SSO session timeout (3 min)
+
+**Competency practised:** #1, override the default SSO session timeout
+<!-- Competency 1, change C2 -->
+
+**Say:** In 4.2, the default SSO session timeout drops from 8 hours to 1 hour. That applies to new and existing tenants. If 1 hour doesn't suit your organization, an admin can override it under Settings > Security > Session. 
+
+**Show:** The "Default SSO session timeout reduced" entry from the release notes. Then a slide with the path: Settings > Security > Session.
+
+**Check:** How can the default SSO session timeout be changed? 
+
+**Answer:** Go to Settings > Security > Session
+
 
 ## 4. Search API v1 to v2 (3 min)
 
-**Competency Practiced:** explain Search API v1 deprecation, move to v2, added `locale` value requirement
+**Competency Practiced:** #2 explain Search API v1 deprecation, move to v2, added `locale` value requirement
 <!-- Competency 2, change C1 -->
 
 **Say:** In 4.2, `GET /v1/search` is deprecated. It still works for now, but it will be removed in a future release. The replacement is `GET /v2/search`, which needs a `locale` value in the query (for example, `en-US`).
@@ -42,8 +46,7 @@
 
 **Answer:** `GET /v1/search` is deprecated. They should move to `GET /v2/search` and add a `locale` value to the query.
 
-<!-- TRAINER NOTE: the changelog gives removal_release 4.3 but says v1 is supported through release 4.4, so no removal release is stated here. The sample request uses locale=enUS, while the changelog's example is en-US. Confirm both with the product team. -->
-<!-- Note: The changelog's removal release (4.3) directly conflicts with the description's (4.4). -->
+<!-- TRAINER NOTE: The changelog's removal release (4.3) directly conflicts with the description's (4.4), so no removal release is stated here. Also, the sample request uses locale=enUS, while the changelog's example is en-US. Confirm both with the product team. -->
 
 ## 5. Hands-on exercise: Is our integration ready for payload v2? (5 min)
 
@@ -102,3 +105,10 @@ Keeping `int(...)` causes a conversion error, because the ID is text. Reading `a
 <!-- TRAINER NOTE: the release notes name the new field article_uuid, but the provided sample uses articleId. The exercise follows the sample as given. Confirm the real field name with the product team before delivering. -->
 
 ## 6. Recap (1 min)
+
+**Say:** To recap, you can now:
+
+- Override the default SSO session timeout, which drops from 8 hours to 1 hour in 4.2.
+- Enable citations for AI Answers on a portal.
+- Explain the Search API v1 deprecation and the new `locale` requirement in v2.
+- Confirm that integrations reading `article_id` are updated for payload v2.

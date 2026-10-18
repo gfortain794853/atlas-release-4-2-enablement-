@@ -31,10 +31,19 @@
 
 ## 4. Search API v1 to v2 (3 min)
 
-**Competency Practiced** #4 , Search API v1 deprecated
-<!-- Competency 4, change C1 -->
+**Competency Practiced:** explain Search API v1 deprecation, move to v2, added `locale` value requirement
+<!-- Competency 2, change C1 -->
 
+**Say:** In 4.2, `GET /v1/search` is deprecated. It still works for now, but it will be removed in a future release. The replacement is `GET /v2/search`, which needs a `locale` value in the query (for example, `en-US`).
 
+***Show:** The "Search API v1 deprecated" entry from the release notes. Then a slide with the two endpoints side by side: `GET /v1/search` (deprecated) and `GET /v2/search` (requires `locale`).
+
+**Check:** A developer on your team asks what the 4.2 change means for their integration. What do you tell them?
+
+**Answer:** `GET /v1/search` is deprecated. They should move to `GET /v2/search` and add a `locale` value to the query.
+
+<!-- TRAINER NOTE: the changelog gives removal_release 4.3 but says v1 is supported through release 4.4, so no removal release is stated here. The sample request uses locale=enUS, while the changelog's example is en-US. Confirm both with the product team. -->
+<!-- Note: The changelog's removal release (4.3) directly conflicts with the description's (4.4). -->
 
 ## 5. Hands-on exercise: Is our integration ready for payload v2? (5 min)
 

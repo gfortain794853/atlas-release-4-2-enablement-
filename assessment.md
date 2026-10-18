@@ -34,19 +34,19 @@
 
 ## Question 3 (scenario)
 
-**Competency:** #3, enable citations for AI Answers in a portal
+**Competency:** #3, enable citations for AI Answers on a portal
 <!-- Change C4 -->
 
-**Question:** A portal owner asks why the new feature "Citations in AI Answers" (flag `ai_answers_citations`) is not showing after release 4.2. The notes say it is off by default. What do you tell them?
+**Question:** A portal owner asks why answers on their portal don't show source articles after release 4.2. The release notes say citations are off by default. What do you tell them?
 
-- A. It is off by default; an admin must enable it for that portal using the setting named in the notes.
-- B. It is a bug; the feature should be on for every portal automatically.
-- C. It switches on by itself once the release has been live for 30 days.
-- D. Only Atlas staff can turn it on.
+- A. An admin must turn citations on for that portal under AI Answers > Display > Show citations.
+- B. It's a bug. Citations should be on for every portal automatically.
+- C. Citations switch on by themselves 30 days after the release.
+- D. Only Atlas staff can turn citations on.
 
 **Answer:** A
 
-**Rationale** The default is off until turned on in AI Answers > Display > Show citations.
+**Rationale:** Citations are off by default and are enabled per portal under AI Answers > Display > Show citations.
 
 ## Question 4 (scenario)
 

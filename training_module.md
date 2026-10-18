@@ -1,46 +1,55 @@
 # Atlas Knowledge 4.2: Admin Training Module (15 min)
 
+## Learning objectives
+By the end, an admin can:
+- Name the breaking changes in 4.2 and the action each needs
+- Override the new default SSO session timeout.
+- Say whether Citations is on and where an admin turns it on.
+- Explain the Search API v1 deprecation and the new `locale` requirement in v2.
+- Confirm that integrations reading `article_id` are updated for payload v2.
+
 ## 1. Welcome and overview (1 min)
 
 **Say:** Atlas Knowledge 4.2 ships on 30 November 2026. This module covers four changes that matter to admins. Two are *breaking* changes that need action: the Search API v1 deprecation and the webhook payload v2 change. One may cause disruption to the user if they are not aware of it, as it changes a default for existing tenants: the SSO session timeout. One is a new, optional feature: citations in AI Answers. There's also a small change for authors, where the Publish button moves to the top toolbar, so you'll want to mention it to your team.
 
 **Show:** A slide listing the four changes under three labels: "Breaking: action needed," "Default changes," and "New features"
 
-## 2. Citations in AI Answers (2 min)
+## 2. SSO session timeout (3 min)
 
-**Competency practised:** #3, enable citations for AI Answers in a portal 
-<!-- Competency 3, change C4 -->
-
-**Say:** In 4.2, AI Answers can show the source articles behind each answer. It is, by default, off. It can be enabled per portal under AI Answers > Display > Show citations.
-
-**Show:** The "Citations in AI Answers" entry from the release notes. Then a slide with the path: AI Answers > Display > Show citations.
-
-**Check:** An author wants to know why answers in their portal don't show source articles after the update. What do you tell them?
-
-**Answer:** Citations in AI Answers is off by default in 4.2. To turn them on, enable them (per portal) via AI Answers > Display > Show citations.
-
-## 3. SSO session timeout (3 min)
-
-**Competency practised:** #1, override the default SSO session timeout
+**Competency practiced:** #1, override the default SSO session timeout
 <!-- Competency 1, change C2 -->
 
 **Say:** In 4.2, the default SSO session timeout drops from 8 hours to 1 hour. That applies to new and existing tenants. If 1 hour doesn't suit your organization, an admin can override it under Settings > Security > Session. 
 
 **Show:** The "Default SSO session timeout reduced" entry from the release notes. Then a slide with the path: Settings > Security > Session.
 
-**Check:** How can the default SSO session timeout be changed? 
+**Check:** After the 4.2 update, users complain that they're asked to sign in again every hour. What changed, and what can an admin do?
 
-**Answer:** Go to Settings > Security > Session
+**Answer:** The default SSO session timeout is now 1 hour instead of 8. An admin can override it under Settings > Security > Session.
 
+<!-- Trainer Note: Confirm if any custom timeouts set in v1 are affected after update -->
+
+## 3. Citations in AI Answers (2 min)
+
+**Competency practiced:** #3, enable citations for AI Answers in a portal 
+<!-- Competency 3, change C4 -->
+
+**Say:** In 4.2, AI Answers can show the source articles behind each answer. It is, by default, off. It can be enabled per portal under AI Answers > Display > Show citations.
+
+**Show:** The "Citations in AI Answers" entry from the release notes. Then a slide with the path: AI Answers > Display > Show citations.
+
+**Check:** An author wants to know why answers in their portal doesn't show source articles after the update. What do you tell them?
+
+**Answer:** Citations in AI Answers is off by default in 4.2. To turn them on, enable them (per portal) via AI Answers > Display > Show citations.
 
 ## 4. Search API v1 to v2 (3 min)
 
-**Competency Practiced:** #2 explain Search API v1 deprecation, move to v2, added `locale` value requirement
+**Competency practiced:** #2, explain Search API v1 deprecation, move to v2, added `locale` value requirement
 <!-- Competency 2, change C1 -->
 
 **Say:** In 4.2, `GET /v1/search` is deprecated. It still works for now, but it will be removed in a future release. The replacement is `GET /v2/search`, which needs a `locale` value in the query (for example, `en-US`).
 
-***Show:** The "Search API v1 deprecated" entry from the release notes. Then a slide with the two endpoints side by side: `GET /v1/search` (deprecated) and `GET /v2/search` (requires `locale`).
+**Show:** The "Search API v1 deprecated" entry from the release notes. Then a slide with the two endpoints side by side: `GET /v1/search` (deprecated) and `GET /v2/search` (requires `locale`).
 
 **Check:** A developer on your team asks what the 4.2 change means for their integration. What do you tell them?
 
@@ -50,7 +59,7 @@
 
 ## 5. Hands-on exercise: Is our integration ready for payload v2? (5 min)
 
-**Competency practised:** #4, confirm integrations that read `article_id` are updated for payload v2
+**Competency practiced:** #4, confirm integrations that read `article_id` are updated for payload v2
 <!-- Competency 4, change C6 -->
 
 **Scenario:** Your team has an integration that reads the `article.published` webhook and records each article's ID. It was written for payload v1. Before 4.2 ships, you've been asked to confirm that it will cope with payload v2.
@@ -69,11 +78,11 @@
 3. Nothing. The payload has no `article_id` field, so the integration won't find an ID.
 4. "Read the new string ID field (`articleId` in the sample) instead of `article_id`."
 
-**Common mistakes:**
+**Possible mistakes:**
 - Assuming the ID is still a number.
 - Expecting the old field name to still be in the payload.
 
-**Debrief (1 minute):** the integration was written for v1, so it looks for a field that v2 no longer sends. Checking a v2 sample against what your code reads is a quick way to confirm readiness before release.
+**Debrief:** the integration was written for v1, so it looks for a field that v2 no longer sends. Checking a v2 sample against what your code reads is a quick way to confirm readiness before release.
 
 ### Extension (optional, not part of the 15 minutes): prove it by running it
 
@@ -84,7 +93,7 @@ For learners who want to test the fix, or for a developer on the team. Do this a
 **Task:**
 1. Run the handler against the v2 sample:
 
-   ```
+   ```bash
    python exercises/webhook_handler.py samples/webhook_article_published_v2.json
    ```
 
@@ -108,7 +117,8 @@ Keeping `int(...)` causes a conversion error, because the ID is text. Reading `a
 
 **Say:** To recap, you can now:
 
-- Override the default SSO session timeout, which drops from 8 hours to 1 hour in 4.2.
-- Enable citations for AI Answers on a portal.
+- Name the breaking changes in 4.2 and the action each needs
+- Override the new default SSO session timeout.
+- Say whether Citations is on and where an admin turns it on.
 - Explain the Search API v1 deprecation and the new `locale` requirement in v2.
 - Confirm that integrations reading `article_id` are updated for payload v2.

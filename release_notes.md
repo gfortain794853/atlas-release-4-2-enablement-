@@ -7,11 +7,11 @@ Release date: 30 November 2026
 
 **Who this affects:** Developers, partners
 
-**What changed:** `GET /v1/search` is deprecated. Use `GET /v2/search`, which requires a `locale` value in the query (for example: en-US). `GET /v1/search` will be removed in a future release. 
+**What changed:** `GET /v1/search` is deprecated. Use `GET /v2/search`, which requires a `locale` value in the query (for example: `en-US`). `GET /v1/search` will be removed in a future release. 
 
 **Action required:** Migrate to v2 as soon as possible.
 
-<!-- REVIEW BEFORE PUBLISHING: C1 source conflict. The changelog gives removal_release 4.3, but its description says v1 stays supported through release 4.4. Specific release number removed from the notes to avoid conflict. Confirm with the product team, then add the removal release number. -->
+<!-- REVIEW BEFORE PUBLISHING: C1 source conflict. The changelog gives removal_release 4.3, but its description says v1 stays supported through release 4.4. Specific release number removed from the notes to avoid conflict. Confirm with the product team, then add the removal release number. Additionally, there is a discrepancy between the desription and the script for locale (`en-US` vs `enUS`) -->
 
 
 ### Webhook payload v2 for article.published
@@ -44,7 +44,7 @@ new and existing tenants.
 
 **What changed:** In the Author Console, Publish moves from the article footer to the top toolbar. Behavior is unchanged.
 
-**Action required:** None.
+**Action required:** No action required.
 
 ### Citations in AI Answers
 

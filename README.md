@@ -14,8 +14,6 @@ C1 removal release (4.3) vs “supported through 4.4”
 
 no stated way to tell whether you still use v1
 
-en-US vs enUS in sample
-
 breaking: true on C1 is unclear, since v1 remains supported. I followed the flag. 
 
 C2 changes behavior immediately but is marked non-breaking; confirm what “breaking” means

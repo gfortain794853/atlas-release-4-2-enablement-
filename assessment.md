@@ -48,7 +48,7 @@
 
 **Rationale:** Citations are off by default and are enabled per portal under AI Answers > Display > Show citations.
 
-## Question 4 (scenario)
+## Question 4 (knowledge)
 
 **Competency:** #4, confirm integrations that read `article_id` are updated for payload v2
 <!-- Change C6 -->
@@ -78,4 +78,4 @@
 
 **Answer:** B
 
-**Rationale:** In 4.2, the `article.published` webhook sends payload v2, which replaces the integer field `article_id` with a string field, so integrations that parse `article_id` must be updated.
+**Rationale:** In 4.2, payload v2 replaces the integer field `article_id` with a string field. An integration that still reads `article_id` no longer finds an ID, which matches the symptom.

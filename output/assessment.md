@@ -8,7 +8,7 @@
 
 - A. Nothing, because the new one-hour default applies only to new tenants, so your existing tenant is not affected.
 - B. Override the default session timeout under Settings > Security > Session.
-- C. Turn the setting on per portal under AI Answers > Display.
+- C. Turn the setting on per portal under Settings > Display > AI Answers.
 - D. Wait for the next release, when the default goes back to eight hours.
 
 **Answer:** B
@@ -68,7 +68,7 @@
 
 - A. `GET /v1/search` has stopped working, so those integrations can no longer search until they switch.
 - B. `GET /v1/search` is deprecated but still supported, and integrations should move to `GET /v2/search`.
-- C. `GET /v1/search` now requires a `locale` query parameter.
+- C. `GET /v1/search` requires a `locale` query parameter that is not necessary after the update.
 - D. The change is not breaking, so no integration needs to move to `GET /v2/search`.
 
 **Answer:** B

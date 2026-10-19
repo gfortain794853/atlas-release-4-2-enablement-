@@ -29,7 +29,7 @@
 
 **8. Sample mismatch.** The sample says `articleId`, the changelog says `article_uuid`. I left the sample alone and put the explanation in the answer key.
 
-**9. Generated assessment.** The checker passes.
+**9. Generated assessment.** Generated assessment. The checker passed, but it only checks structure, so I read every question against the changelog. All five rationales are supported. I replaced option C in Question 1, because the suggested menu path was too obviously incorrect. I rewrote option C in Question 5, because it repeated a wrong answer from Question 2.
 
 **10. Pipeline testing.** Testing with invented entries showed a feature with `default: on` being told "Enable the feature if you want it." It was fixed.
 

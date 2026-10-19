@@ -34,7 +34,7 @@ REQUIRED = ["id", "title", "type", "breaking", "audience", "visibility", "descri
 ACTIONS = {
     "api_deprecation": "Migrate to the replacement named above as soon as possible.",
     "api_change": "Update any integration affected by this change.",
-        "config_change": "Review the new default before you upgrade, and override it if it doesn't suit your organization.",
+        "config_change": "Review the new default before the release date, and override it if it doesn't suit your organization.",
     "ui_change": "None.",
     "feature": "No action required. Enable the feature if you want it.",
 }

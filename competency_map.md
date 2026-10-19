@@ -1,3 +1,5 @@
+## Competency map
+
 **The admin can...**
 
 | # | Competency | Changes covered | Level |

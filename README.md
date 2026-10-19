@@ -77,5 +77,4 @@ The assessment has an AI step:
 
 - Add an AI rewriting step for the release notes, with its own checker, and tests for the generator.
 - Compare field names in the sample files against the changelog, which would produce the C6 flag automatically.
-- Add a prompt rule that wrong options include a near-miss from the same change.
 - Confirm the open questions above ("Unclear in the source material") with the product team before publishing.

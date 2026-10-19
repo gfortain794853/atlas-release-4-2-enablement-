@@ -1,6 +1,6 @@
 # AI log
 
-**Tools:** Claude Opus 5.5 (claude.ai chat) to explain the brief, review my drafts, and help with `generate.py` and the assessment prompt. VS Code and Git for the repo. I wrote the competency rows, release-note entries and module sections myself first, then had Claude review them.
+**Tools:** Claude Opus 5.5 (claude.ai chat) to explain the brief, review my drafts, `generate.py`, and structure the assessment prompt. VS Code and Git for the repo. I wrote the competency rows, release-note entries and module sections myself first, then had Claude review them.
 
 ## Main prompts
 
@@ -9,6 +9,7 @@
 2. Script prompt: "Write a Python 3 script that reads changelog.yaml and writes customer release notes to output/release_notes.md ... Do not include any changes with visibility: internal ... keep it brief and pythonic. leave lots of comments." The script was reviewed and minor edits made.
 3. Small fixes: "Fix the spacing on this yaml" and "Check my indentation on lines 22-45", etc.
 4. Ran the filled prompt (`output/assessment_prompt_filled.md`) through Claude to produce the questions.
+5. Finding gaps in the assessment rules to improve assessment quality
 
 ## Where I changed or questioned AI output
 
@@ -34,7 +35,8 @@
 
 ## Not trusted without checking
 
-I compared the generated notes with my hand-written ones in `drafts/`. The API path in the script was never run.
+I compared the generated notes with my hand-written ones in `drafts/`. A person still has to read the generated questions. The API path in `generate.py` was never run.
+
 
 
 

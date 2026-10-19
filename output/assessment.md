@@ -3,79 +3,74 @@
 ## Question 1 (scenario)
 
 **Competency:** #1, override the default SSO session timeout
-<!-- Change C2 -->
 
-**Question:** After the 4.2 upgrade, users on your tenant are asked to sign in again after about an hour. Your organization's security policy allows longer sessions. What should you do?
+**Question:** Your tenant has been live for two years. After upgrading to 4.2, users complain that they are asked to sign in far more often, and your security policy allows longer sessions. What should you do?
 
-- A. Nothing. The session timeout can't be changed.
+- A. Nothing. Existing tenants keep their old 8-hour default.
 - B. Override the default under Settings > Security > Session.
-- C. Turn off SSO for the tenant.
-- D. Wait for the next release to restore the old default.
+- C. Turn off SSO so that sessions no longer expire.
+- D. Change the setting under AI Answers > Display.
 
 **Answer:** B
 
-**Rationale:** 4.2 lowers the default SSO session timeout from 8 hours to 1 hour, and admins can override it under Settings > Security > Session.
+**Rationale:** In 4.2 the default SSO session timeout drops from 8 hours to 1 hour for new and existing tenants, and admins can override it under Settings > Security > Session.
 
 ## Question 2 (knowledge)
 
 **Competency:** #2, explain the Search API v1 deprecation, the move to v2, and the new `locale` requirement
-<!-- Change C1 -->
 
-**Question:** A developer on your team is moving a search call from `GET /v1/search` to `GET /v2/search`. According to the release notes, which value must the new request include?
+**Question:** Which statement best describes the Search API change in 4.2?
 
-- A. A `payload_version` value
-- B. A `portal` value
-- C. An `article_id` value
-- D. A `locale` value
+- A. `GET /v1/search` has been removed and now returns an error.
+- B. `GET /v2/search` is deprecated, so integrations should keep using v1.
+- C. `GET /v1/search` is deprecated, and `GET /v2/search` takes no extra parameters.
+- D. `GET /v1/search` is deprecated, and `GET /v2/search` replaces it and requires a `locale` query parameter.
 
 **Answer:** D
 
-**Rationale:** The release notes say `GET /v2/search` requires a `locale` query parameter, for example `en-US`.
+**Rationale:** The release notes say `GET /v1/search` is deprecated and that `GET /v2/search` requires a `locale` query parameter.
 
 ## Question 3 (scenario)
 
 **Competency:** #3, enable citations for AI Answers on a portal
-<!-- Change C4 -->
 
-**Question:** A portal owner asks why answers on their portal don't show source articles after release 4.2. The release notes say citations are off by default. What do you tell them?
+**Question:** The owner of your help portal wants AI Answers to show the source articles behind each answer, but nothing appears after the 4.2 upgrade. What do you do?
 
-- A. An admin must turn citations on for that portal under AI Answers > Display > Show citations.
-- B. It's a bug. Citations should be on for every portal automatically.
-- C. Citations switch on by themselves 30 days after the release.
-- D. Only Atlas staff can turn citations on.
+- A. Enable citations for that portal under AI Answers > Display > Show citations.
+- B. Nothing. Citations are on by default, so clear the portal's cache.
+- C. Enable citations once, and every portal switches on automatically.
+- D. Change the default under Settings > Security > Session.
 
 **Answer:** A
 
 **Rationale:** Citations are off by default and are enabled per portal under AI Answers > Display > Show citations.
 
-## Question 4 (knowledge)
+## Question 4 (scenario)
 
-**Competency:** #4, confirm integrations that read `article_id` are updated for payload v2
-<!-- Change C6 -->
+**Competency:** #4, confirm that integrations reading `article_id` are updated for payload v2
 
-**Question:** Your team has an integration that reads `article_id` from the `article.published` webhook. What do the 4.2 release notes say about it?
+**Question:** Since the 4.2 release, an integration on your team that handles the `article.published` webhook can't find an article's ID, and nobody has changed its code. What most likely caused this?
 
-- A. Nothing needs to change, because the webhook is unchanged.
-- B. It's fine as long as it also sends a `locale` value.
-- C. It must be updated, because payload v2 replaces the integer field `article_id` with a string field.
-- D. It must be updated, but only if the SSO session timeout is changed.
+- A. The webhook no longer sends article IDs at all.
+- B. Payload v2 still sends `article_id`, but now as a string instead of an integer.
+- C. Payload v2 replaces the integer field `article_id` with a string field.
+- D. The webhook was deprecated and replaced by `GET /v2/search`.
 
 **Answer:** C
 
-**Rationale:** The release notes say payload v2 replaces the integer field `article_id` with a string field, so integrations that parse `article_id` must be updated.
+**Rationale:** In 4.2, the `article.published` webhook sends payload v2, which replaces the integer field `article_id` with a string field, so integrations that parse `article_id` must be updated.
 
 ## Question 5 (scenario)
 
-**Competency:** #4, confirm integrations that read `article_id` are updated for payload v2
-<!-- Change C6 -->
+**Competency:** #2, explain the Search API v1 deprecation, the move to v2, and the new `locale` requirement
 
-**Question:** Since the 4.2 release, an integration on your team that handles the `article.published` webhook reports that it can't find an article's ID. Nobody has changed the integration's code. What is the most likely cause?
+**Question:** A developer on your team asks what a search call must look like after moving to v2. What do you tell them?
 
-- A. The default SSO session timeout dropped to 1 hour.
-- B. Payload v2 replaced the integer field `article_id`, which the integration reads, with a string field.
-- C. Citations in AI Answers are off by default.
-- D. `GET /v1/search` was deprecated.
+- A. Keep calling `GET /v1/search` and add a `payload_version` value.
+- B. Call `GET /v2/search` and include a `locale` value, for example `en-US`.
+- C. Call `GET /v2/search` with no other changes.
+- D. Replace `article_id` with a string field in the request.
 
 **Answer:** B
 
-**Rationale:** In 4.2, payload v2 replaces the integer field `article_id` with a string field. An integration that still reads `article_id` no longer finds an ID, which matches the symptom.
+**Rationale:** `GET /v2/search` requires a `locale` query parameter, so a v2 call must include one as well as use the new endpoint.

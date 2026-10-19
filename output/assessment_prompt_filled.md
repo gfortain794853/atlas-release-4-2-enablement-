@@ -6,6 +6,8 @@ Atlas Knowledge 4.2, releasing 30 November 2026
 
 ## Competencies (every question must be tied to one of these)
 
+## Competency map
+
 **The admin can...**
 
 | # | Competency | Changes covered | Level |

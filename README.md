@@ -40,6 +40,12 @@ Claude suggested script as part of training module for C6; audience includes dev
 
 "Check my indentation on lines 22-45"
 
+"Write a Python 3 script that reads changelog.yaml and writes customer release
+notes to output/release_notes.md.
+
+Input: a YAML file with product, release, release_date, and a list of changes. Each
+change has id, title, type, breaking, audience, visibility, description, and optional
+fields such as removal_release, feature_flag, and default.Do not include any changes with visibility: internal. Separate breaking changes from the rest. Each entry has a "###" title, then "Who this affects", "What changed", and "Action required", each on its own line separated by blank lines. Derive "Action required" from the change type, using a lookup table with a safe default for unknown types. If a required field is missing, stop with a clear error naming the entry. Adding a new entry to the YAML must not require editing the script or the output. keep it brief and pythonic. leave lots of notes"
 
 
 <! -- REMOVE BEFORE SENDING -->

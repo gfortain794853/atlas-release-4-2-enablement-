@@ -30,7 +30,7 @@ Release date: 30 November 2026
 
 **What changed:** The default SSO session timeout changes from 8 hours to 1 hour for new and existing tenants. Admins can override it under Settings > Security > Session.
 
-**Action required:** No action required. Review the new default and override it if it doesn't suit your organization.
+**Action required:** Review the new default before you upgrade, and override it if it doesn't suit your organization.
 
 ### Publish button moved to top toolbar
 

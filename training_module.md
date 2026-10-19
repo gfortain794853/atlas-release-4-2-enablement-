@@ -16,7 +16,7 @@ By the end, an admin can:
 
 ## 2. SSO session timeout (3 min)
 
-**Competency practiced:** #1, override the default SSO session timeout
+**Competency practiced:** #1, override new default SSO session timeout
 <!-- Competency 1, change C2 -->
 
 **Say:** In 4.2, the default SSO session timeout drops from 8 hours to 1 hour. That applies to new and existing tenants. If 1 hour doesn't suit your organization, an admin can override it under Settings > Security > Session. 
@@ -27,7 +27,7 @@ By the end, an admin can:
 
 **Answer:** The default SSO session timeout is now 1 hour instead of 8. An admin can override it under Settings > Security > Session.
 
-<!-- Trainer Note: Confirm if any custom timeouts set in v1 are affected after update -->
+<!-- Trainer Note: Confirm if any custom timeouts set before 4.2 are affected after update -->
 
 ## 3. Citations in AI Answers (2 min)
 
@@ -38,7 +38,7 @@ By the end, an admin can:
 
 **Show:** The "Citations in AI Answers" entry from the release notes. Then a slide with the path: AI Answers > Display > Show citations.
 
-**Check:** An author wants to know why answers in their portal doesn't show source articles after the update. What do you tell them?
+**Check:** An author wants to know why answers in their portal don't show source articles after the update. What do you tell them?
 
 **Answer:** Citations in AI Answers is off by default in 4.2. To turn them on, enable them (per portal) via AI Answers > Display > Show citations.
 
@@ -73,10 +73,10 @@ By the end, an admin can:
 4. Write one sentence telling your developer what must change.
 
 **Answer key:**
-1. The field is `articleId`. (The release notes call the new field `article_uuid`, but the provided sample uses `articleId`. Use the name in the sample.)
+1. The field is `articleId`. (The release notes call the new field `article_uuid`, but the provided sample uses `articleId`. Flag this to your developer and product team.)
 2. Text. It's a string like `a7c9e2f4-...`, not a number.
 3. Nothing. The payload has no `article_id` field, so the integration won't find an ID.
-4. "Read the new string ID field (`articleId` in the sample) instead of `article_id`."
+4. "Read the new string ID field instead of article_id. The sample calls it articleId and the release notes call it article_uuid, so confirm which before changing the code"
 
 **Possible mistakes:**
 - Assuming the ID is still a number.

@@ -20,10 +20,11 @@ from pathlib import Path
 
 import yaml
 
-MODEL = "claude-sonnet-5-5"
+MODEL = "claude-opus-5-5"
 OUT_DIR = Path("output")
 PROMPT_TEMPLATE = Path("prompts/assessment_prompt.md")
 COMPETENCY_MAP = Path("competency_map.md")
+ASSESSMENT_SOURCE = OUT_DIR / "assessment_source.md"   # the prompt the current assessment was made from
 
 # Every entry must have these fields, or the script stops with a clear message.
 REQUIRED = ["id", "title", "type", "breaking", "audience", "visibility", "description"]
@@ -33,7 +34,7 @@ REQUIRED = ["id", "title", "type", "breaking", "audience", "visibility", "descri
 ACTIONS = {
     "api_deprecation": "Migrate to the replacement named above as soon as possible.",
     "api_change": "Update any integration affected by this change.",
-    "config_change": "No action required. Review the new default and override it if it doesn't suit your organization.",
+        "config_change": "Review the new default before you upgrade, and override it if it doesn't suit your organization.",
     "ui_change": "None.",
     "feature": "No action required. Enable the feature if you want it.",
 }
@@ -49,6 +50,8 @@ def load_changelog(path):
         missing = [key for key in REQUIRED if key not in change]
         if missing:
             sys.exit(f"Entry {change.get('id', '?')} is missing: {', '.join(missing)}")
+        if change["visibility"] not in ("external", "internal"):
+            sys.exit(f"Entry {change['id']} has visibility '{change['visibility']}'. Use external or internal.")
     return data
 
 
@@ -270,6 +273,8 @@ def validate_assessment(text, data):
     # Things customers must never see.
     lowered = text.lower()
     for c in data["changes"]:
+        if re.search(rf"\b{re.escape(c['id'])}\b", text):
+            problems.append(f"Mentions change ID {c['id']}; customers never see IDs.")
         if not is_external(c):
             if c["title"].lower() in lowered or re.search(rf"\b{re.escape(c['id'])}\b", text):
                 problems.append(f"Mentions internal change {c['id']} ({c['title']}).")
@@ -299,7 +304,10 @@ def main():
     if args and args[0] == "--check":
         path = args[1] if len(args) > 1 else str(OUT_DIR / "assessment.md")
         data = load_changelog("changelog.yaml")
-        report(validate_assessment(Path(path).read_text(encoding="utf-8"), data))
+        problems = validate_assessment(Path(path).read_text(encoding="utf-8"), data)
+        report(problems)
+        if not problems:
+           ASSESSMENT_SOURCE.write_text(build_prompt(data), encoding="utf-8")
         return
 
     data = load_changelog(args[0] if args else "changelog.yaml")
@@ -315,12 +323,16 @@ def main():
         problems = validate_assessment(reply, data)
         target = OUT_DIR / ("assessment.md" if not problems else "assessment_DRAFT.md")
         target.write_text(reply, encoding="utf-8")
+        if not problems:
+            ASSESSMENT_SOURCE.write_text(prompt, encoding="utf-8")
         print(f"Wrote {target}")
         report(problems)
         return
 
     existing = OUT_DIR / "assessment.md"
     if existing.exists():
+        if not ASSESSMENT_SOURCE.exists() or ASSESSMENT_SOURCE.read_text(encoding="utf-8") != prompt:
+            print("WARNING: changelog.yaml or competency_map.md changed since this assessment was made. Regenerate it.")
         print("No API key set, so the existing assessment was not regenerated. Checking it instead:")
         report(validate_assessment(existing.read_text(encoding="utf-8"), data))
     else:

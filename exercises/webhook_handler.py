@@ -1,4 +1,4 @@
-"""Exercise B: this handler was written for the OLD article.published webhook (payload v1).
+"""Extension: this handler was written for the OLD article.published webhook (payload v1).
 It breaks on payload v2. Your job: fix get_article_id() so it works on the v2 sample.
 
 Usage:  python exercises/webhook_handler.py samples/webhook_article_published_v2.json

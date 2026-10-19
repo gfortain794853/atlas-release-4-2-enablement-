@@ -14,11 +14,11 @@ Take-home for the AI Engineer, Learning & Development role. It turns the 4.2 cha
 | 6 | AI log | `ai_log.md` |
 | 7 | README | this file |
 
-`samples/` and `changelog.yaml` are the starter files, unchanged. `drafts/` holds my hand-written release notes and assessment, which I used as the reference for what good looks like.
+`samples/` and `changelog.yaml` are the starter files, unchanged except for formatting of C4 due to copy/paste from PDF. `drafts/` holds my hand-written release notes and assessment, which I used as the reference for what good looks like.
 
 ## Tools used
 
-Claude (Anthropic chat) for explaining the brief, reviewing my drafts, and helping with the script and prompt. Python 3 with PyYAML, VS Code and Git. Details are in `ai_log.md`.
+Claude Opus 5.5 (claude.ai chat) for explaining the brief, reviewing my drafts, and helping with the script and prompt. Python 3 with PyYAML, VS Code and Git. Details are in `ai_log.md`.
 
 ## How to run
 
@@ -71,7 +71,7 @@ The assessment has an AI step:
 - The checker tests structure and rules only. It cannot judge whether a wrong option is plausible or a rationale is true, so a person has to read the questions.
 - The generated notes are plainer than my hand-written ones in `drafts/`. Review flags that come from judgment, such as the C6 sample mismatch, cannot be generated.
 - Sentences are split on full stops, so an abbreviation like "e.g." can confuse the "must" rule in an unusual description.
-- I made a minor change to the generated assessment's Q4 after reading it: the wrong options came from unrelated changes that I found too easy for an assessment. Re-running produces a fresh draft that needs the same review, so the assessment is AI-generated and human-reviewed, not fully hands-off.
+- The competency map is hand-written. A new change only appears in the assessment once a competency covering it is added to the map.
 
 ## With more time
 

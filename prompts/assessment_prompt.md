@@ -27,6 +27,9 @@ These are the only facts you may use. Do not add details from your own knowledge
 9. Refer to a replaced field by the names given in the change descriptions, and never make a question depend on how a field name is spelled.
 10. Use the product's own terms exactly as written in the descriptions (for example "AI Answers", "Show citations"). Put field names, endpoints and parameters in backticks.
 11. If something is unclear or missing in the descriptions, do not guess. Leave it out of the questions.
+12. Copy the competency text exactly as written in the table.
+13. No two questions may test the same fact.
+14. At least one wrong option per question must be a near-miss from the same change, not a detail from an unrelated change.
 
 ## Output format
 

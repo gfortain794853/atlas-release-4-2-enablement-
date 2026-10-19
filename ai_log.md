@@ -1,12 +1,12 @@
 # AI log
 
-**Tools:** Claude (Anthropic chat) to explain the brief, review my drafts, and help with `generate.py` and the assessment prompt. VS Code and Git for the repo. I wrote the competency rows, release-note entries and module sections myself first, then had Claude review them.
+**Tools:** Claude Opus 5.5 (claude.ai chat) to explain the brief, review my drafts, and help with `generate.py` and the assessment prompt. VS Code and Git for the repo. I wrote the competency rows, release-note entries and module sections myself first, then had Claude review them.
 
 ## Main prompts
 
 
 1. "How's this?" on each draft (competencies, notes, module sections, questions).
-2. Script prompt: "Write a Python 3 script that reads changelog.yaml and writes customer release notes to output/release_notes.md ... Do not include any changes with visibility: internal ... keep it brief and pythonic. leave lots of comments." The script was reviewed and minor edits made
+2. Script prompt: "Write a Python 3 script that reads changelog.yaml and writes customer release notes to output/release_notes.md ... Do not include any changes with visibility: internal ... keep it brief and pythonic. leave lots of comments." The script was reviewed and minor edits made.
 3. Small fixes: "Fix the spacing on this yaml" and "Check my indentation on lines 22-45", etc.
 4. Ran the filled prompt (`output/assessment_prompt_filled.md`) through Claude to produce the questions.
 
@@ -28,7 +28,7 @@
 
 **8. Sample mismatch.** The sample says `articleId`, the changelog says `article_uuid`. I left the sample alone and put the explanation in the answer key.
 
-**9. Generated assessment.** The checker passes. Rewrote Q4: it was an acceptable question but the answers weren't as challenging as I would like for a test of knowledge.  
+**9. Generated assessment.** The checker passes.
 
 **10. Pipeline testing.** Testing with invented entries showed a feature with `default: on` being told "Enable the feature if you want it." It was fixed.
 
